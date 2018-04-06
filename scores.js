@@ -1,40 +1,42 @@
 const jsonBody = require("body/json");
 var scores = [{ name: "Edwin", score: 50 }, { name: "David", score: 39 }];
-
-
-const textBody = require("body");
+var resources = {
+  "/IP": "Internet Protocol",
+  "/TCP": "Transmission Control Protocol"
+};
 const http = require('http');
 
-
-const hostname = null;
+const hostname = '127.0.0.1';
 const port = 3000;
+let scoreSort(function(a,b){
+  return b.scores-a.scores};
 
 const server = http.createServer((req, res) => {
-  var body;
+  jsonBody(req, res, function(err, body){
 
-  if (req.url === "undefined") {
-    res.statusCode = 404;
-  } else {
-    res.statusCode = 200;
-    // scores.sort();
-    // scores.reverse();
-    // scores.slice(0,3);
-
-    res.setHeader('Content-Type', 'application/javascript');
-    body = JSON.stringify(scores);
+  let json;
+  if (req.method === "GET") {
+    if (req.url !== "/scores") {
+      res.statusCode = 404;
+    } else {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/javascript');
+      json = resources[req.url] = JSON.stringify(scores);
+    }
+  } else if (req.method === "POST") {
+      if (req.url !== "/scores"){
+        res.statusCode = 404;
+      }
+      else{
+        res.statusCode = 201;
+        scores.push(body);
+        scores.sort(sortScores);
+        
+      }
   }
 
-  if (req.method === "GET") {
-  //
-  if (req.method === "POST") {
-  res.statusCode = 201;
-  scores.push(body);
-
-  //
-}
-res.end();
-console.log(req.url);
-console.log(req.method);
+  res.end(json);
+  })
 });
 
 server.listen(port, hostname, () => {
