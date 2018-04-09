@@ -8,10 +8,10 @@ const http = require('http');
 
 const hostname = '127.0.0.1';
 const port = 3000;
-let scoreSort(function(a,b){
+let scoreSort(function(a,b)){
   return b.scores-a.scores};
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req,res) => {
   jsonBody(req, res, function(err, body){
 
   let json;
@@ -20,18 +20,16 @@ const server = http.createServer((req, res) => {
       res.statusCode = 404;
     } else {
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/javascript');
+      res.setHeader('Content-Type','application/javascript');
       json = resources[req.url] = JSON.stringify(scores);
     }
   } else if (req.method === "POST") {
       if (req.url !== "/scores"){
         res.statusCode = 404;
-      }
-      else{
+      }else{
         res.statusCode = 201;
         scores.push(body);
         scores.sort(sortScores);
-        
       }
   }
 
