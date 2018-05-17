@@ -14,7 +14,7 @@ const hostname = '127.0.0.1';
 // sets port 3000
 const port = 3000;
 // function orders scores from highest to lowest???
-let scoreSort(function(a,b)){
+let scoreSort(function(a,b){
   return b.scores-a.scores};
 // function creates a server with request & response... http??? jsonbody??? err???
 const server = http.createServer((req,res) => {
@@ -50,6 +50,7 @@ const server = http.createServer((req,res) => {
         scores.sort(sortScores);
 // starting with the zero position of the scores array and ending before position 3, remove everything else
         scores.splice(0,3);
+        // could also replace the previous line with 'scores.length=3'.
       }
   }
 // end the process and send the response
