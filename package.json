@@ -1,0 +1,23 @@
+{
+  "name": "scores",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scores.js",
+  "dependencies": {
+    "body": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bomazani/scores.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bomazani/scores/issues"
+  },
+  "homepage": "https://github.com/bomazani/scores#readme"
+}
